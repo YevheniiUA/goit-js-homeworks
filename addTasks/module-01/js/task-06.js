@@ -10,7 +10,7 @@
 let getNumber = prompt("Введите произвольное целое число");
 if (getNumber === null) {
   alert("Ну и ладно, пока!");
-} else if (Number.isInteger(Number(getNumber))) {
+} else if (Number(getNumber) % 1 === 0 && getNumber !== "") {
   alert("Спасибо!");
 } else {
   alert("Необходимо было ввести целое число!");

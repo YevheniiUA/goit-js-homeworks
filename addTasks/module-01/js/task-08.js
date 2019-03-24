@@ -17,10 +17,12 @@
     5 - "Каталог лучших отелей"
 */
 const userInput = prompt('Введите число от 1 до 5');
-const userNumber = Number(userInput);
 
-if (userNumber >= 1 && userNumber <= 5) {
-  switch (userNumber) {
+if (userInput === null) {
+  alert('Очень жаль, приходите еще!')
+} else {
+  userInput = Number(userInput);
+  switch (userInput) {
     case 1:
       alert('Каталог хостелов');
       break;
@@ -36,9 +38,7 @@ if (userNumber >= 1 && userNumber <= 5) {
     case 5:
       alert('Каталог лучших отелей');
       break;
+    default:
+      alert('Неверный ввод, возможные варианты 1-5!');
   }
-} else if (userInput === null) {
-  alert('Очень жаль, приходите еще!')
-} else {
-  alert('Неверный ввод, возможные варианты 1-5!');
 }
