@@ -1,26 +1,29 @@
-const country = 'Индия';
+let userCountry = prompt("Введите страну доставки");
 let howMuch;
-
-switch (country) {
-    case 'Китай':
-        howMuch = 100;
-        break;
-    case 'Южная Америка':
-        howMuch = 250;
-        break;
-    case 'Австралия':
-        howMuch = 170;
-        break;
-    case 'Индия':
-        howMuch = 80;
-        break;
-    case 'Ямайка':
-        howMuch = 120;
-        break;
-    default:
-       console.log('В вашей стране доставка не доступна.');
+if (userCountry) {
+  userCountry = userCountry.toLowerCase().trim();
 }
 
-if(howMuch !== undefined) {
-console.log(`Доставка в ${country} будет стоить ${howMuch} кредитов.`);
+switch (userCountry) {
+  case "китай":
+    howMuch = 100;
+    break;
+  case "южная америка":
+    howMuch = 250;
+    break;
+  case "австралия":
+    howMuch = 170;
+    break;
+  case "индия":
+    howMuch = 80;
+    break;
+  case "ямайка":
+    howMuch = 120;
+    break;
+  default:
+    console.log("В вашей стране доставка не доступна.");
+}
+
+if (howMuch) {
+  console.log(`Доставка в ${userCountry} будет стоить ${howMuch} кредитов.`);
 }
