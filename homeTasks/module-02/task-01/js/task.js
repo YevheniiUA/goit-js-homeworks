@@ -1,18 +1,22 @@
 let input;
 const numbers = [];
 let total = 0;
-
 do {
   input = prompt("Введите число");
-  if (isNaN(input)) {
-    alert("Было введено не число, попробуйте еще раз");
+  if (input !== null) {
+    input = input.trim();
+  } else {
+    alert("А жаль...")
     continue;
   }
-  numbers.push(Number(input));
+  if (!isNaN(input) && input !== "") {
+    numbers.push(Number(input));
+  } else {
+    alert("Было введено не число, попробуйте еще раз");
+  }
 } while (input !== null);
-
-if (numbers.length === 1) {
-  alert("Массив пустой");
+if (numbers.length === 0) {
+  alert("Массив чисел пустой");
 } else {
   for (const number of numbers) {
     total += number;
