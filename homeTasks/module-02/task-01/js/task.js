@@ -3,21 +3,15 @@ const numbers = [];
 let total = 0;
 do {
   input = prompt("Введите число");
-  if (input !== null) {
-    input = input.trim();
-  } else {
-    alert("А жаль...")
+  if (input === null) {
     continue;
-  }
-  if (!isNaN(input) && input !== "") {
-    numbers.push(Number(input));
+  } else if (!Number.isNaN(+input) && input.trim() !== "") {
+    numbers.push(+input);
   } else {
     alert("Было введено не число, попробуйте еще раз");
   }
 } while (input !== null);
-if (numbers.length === 0) {
-  alert("Массив чисел пустой");
-} else {
+if (numbers.length) {
   for (const number of numbers) {
     total += number;
   }

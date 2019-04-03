@@ -6,17 +6,15 @@ do {
   inputPasswords = prompt("Введите пароль");
   if (inputPasswords !== null) {
     attemptsLeft -= 1;
-    inputPasswords = inputPasswords.trim();
   } else {
     continue;
   }
-  const isCorrectPassword = passwords.includes(inputPasswords);
-  if (isCorrectPassword) {
+  if (passwords.includes(inputPasswords)) {
     alert("Добро пожаловать!");
     break;
-  } else if (attemptsLeft !== 0) {
+  } else if (attemptsLeft) {
     alert(`Неверный пароль, у вас осталось ${attemptsLeft} попыток`);
   } else {
     alert("У вас закончились попытки, аккаунт заблокирован!");
   }
-} while (inputPasswords !== null && attemptsLeft !== 0);
+} while (inputPasswords !== null && attemptsLeft);
