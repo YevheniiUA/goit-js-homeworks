@@ -39,12 +39,13 @@ const isLoginUnique = function(allLogins, login) {
 const addLogin = function(allLogins, login) {
   let message = "Такой логин уже используется!";
   if (!isLoginValid(login)) {
-    message ="Ошибка! Логин должен быть от 4 до 16 символов";
+    message = "Ошибка! Логин должен быть от 4 до 16 символов";
   } else if (isLoginUnique(allLogins, login)) {
+    allLogins.push(login);
     message = "Логин успешно добавлен!";
   }
-    return console.log(message);
-  
+  console.log(message); 
+  return message;
 };
 
 // Вызовы функции для проверки
