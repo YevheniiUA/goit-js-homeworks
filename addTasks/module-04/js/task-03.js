@@ -3,6 +3,10 @@
   Функция возвращает количество свойств.
 */
 
+const countProps = obj => {
+  return Object.keys(obj).length;
+}
+
 // Вызовы функции для проверки
 console.log(
     countProps({})

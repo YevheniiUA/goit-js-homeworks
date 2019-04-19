@@ -5,6 +5,10 @@
   Возвращает true если объект пустой, false если не пустой.
 */
 
+const isObjectEmpty = obj => {
+  return !Object.keys(obj).length;
+}
+
 // Вызовы функции для проверки
 console.log(
     isObjectEmpty({})

@@ -7,6 +7,14 @@
   Каждое поле объекта, передаваемого в функцию, имеет вид "имя":"зарплата"
 */
 
+const countTotalSalary = obj => {
+  let totalSalary = 0;
+  for (const salary of Object.values(obj)) {
+    totalSalary += salary;
+  }
+  return totalSalary;
+}
+
 // Вызовы функции для проверки
 console.log(
     countTotalSalary({})
