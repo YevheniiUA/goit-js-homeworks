@@ -104,10 +104,11 @@ const notepad = {
      * Возвращает: новый массив заметок, контент которых содержит подстроку
      */
     const arrayNotes = [];
+    query = query.toLowerCase();
     for (const note of this.notes) {
       if (
-        note.title.toLowerCase().includes(query.toLowerCase()) ||
-        note.body.toLowerCase().includes(query.toLowerCase())
+        note.title.toLowerCase().includes(query) ||
+        note.body.toLowerCase().includes(query)
       ) {
         arrayNotes.push(note);
       }
