@@ -38,7 +38,6 @@ const notepad = {
         return note;
       }
     }
-    return undefined;
   },
   saveNote(note) {
     /*
@@ -72,14 +71,10 @@ const notepad = {
      * Принимает: идентификатор заметки и объект, полями которого надо обновить заметку
      * Возвращает: обновленную заметку
      */
-    for (const note of this.notes) {
-      if (note.id === id) {
-        for (const [key, value] of Object.entries(updatedContent)) {
-          note[key] = value;
-        }
-        return note;
-      }
-    }
+   const updateNote = { ...this.findNoteById(id), ...updatedContent};
+   this.deleteNote(id);
+   this.saveNote(updateNote);
+   return updateNote;
   },
   updateNotePriority(id, priority) {
     /*
@@ -88,12 +83,15 @@ const notepad = {
      * Принимает: идентификатор заметки и ее новый приоритет
      * Возвращает: обновленную заметку
      */
-    for (const note of this.notes) {
-      if (note.id === id) {
-        note.priority = priority;
-        return note;
-      }
-    }
+    // for (const note of this.notes) {
+    //   if (note.id === id) {
+    //     note.priority = priority;
+    //     return note;
+    //   }
+    // }
+    let updateNote = this.findNoteById(id);
+    updateNote.priority = priority;
+    return updateNote;
   },
   filterNotesByQuery(query) {
     /*
@@ -219,7 +217,8 @@ console.log(
  * Обновим контент заметки с id-3
  */
 notepad.updateNoteContent("id-3", {
-  title: "Get comfy with React.js or Vue.js"
+  title: "Get comfy with React.js or Vue.js",
+  ska: "fuck task"
 });
 
 console.log(
