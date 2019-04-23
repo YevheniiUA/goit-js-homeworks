@@ -1,3 +1,4 @@
+"use strict";
 /*Создай объект notepad для работы с массивом заметок. Каждая заметка это объект следующего формата:
 
 id: string | integer
@@ -71,10 +72,8 @@ const notepad = {
      * Принимает: идентификатор заметки и объект, полями которого надо обновить заметку
      * Возвращает: обновленную заметку
      */
-   const updateNote = { ...this.findNoteById(id), ...updatedContent};
-   this.deleteNote(id);
-   this.saveNote(updateNote);
-   return updateNote;
+
+    return Object.assign(this.findNoteById(id),updatedContent);
   },
   updateNotePriority(id, priority) {
     /*
@@ -217,8 +216,7 @@ console.log(
  * Обновим контент заметки с id-3
  */
 notepad.updateNoteContent("id-3", {
-  title: "Get comfy with React.js or Vue.js",
-  ska: "fuck task"
+  title: "Get comfy with React.js or Vue.js"
 });
 
 console.log(
