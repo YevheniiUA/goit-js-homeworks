@@ -188,23 +188,19 @@ createMovieCard();
       на 10px
 */
 
-function createBoxes(num) {
-  const div = document.querySelector('#root');
+const div = document.querySelector('#root');
 
-  let width = 30,
-    height = 30;
+function createBoxes(num) {
+  let count = 30;
+  let newDiv = '';
   while (num > 0) {
-    const newDiv = document.createElement('div');
-    newDiv.style.width = `${width}px`;
-    newDiv.style.height = `${height}px`;
-    newDiv.style.background = `#${Number.parseInt(Math.random()*1000)}`;
-    newDiv.style.marginBottom = '15px';
-    width += 10;
-    height += 10;
-    div.append(newDiv);
+    const rgb = [Number.parseInt(Math.random()*255),Number.parseInt(Math.random()*255),Number.parseInt(Math.random()*255)];
+    newDiv+=`<div style = "margin: 15px; background-color: rgb(${rgb.join(',')}); width: ${count}px; height: ${count}px"></div>`;
+    count += 10;
     num--;
   }
-  return div;
+  return newDiv;
 }
-createBoxes(20);
+div.insertAdjacentHTML('afterbegin', createBoxes(20));
+
 
