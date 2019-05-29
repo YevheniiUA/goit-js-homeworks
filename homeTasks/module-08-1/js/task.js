@@ -5,6 +5,7 @@ const createQuiz = quizData => {
   document.querySelector("button").classList.add("button");
   const form = document.querySelector("form");
   form.classList.add("form");
+
   const quizSections = quizData.questions.reduce((acc, quiz, index) => {
     const quizSection = document.createElement("section");
     quizSection.classList.add("form-sections");
@@ -17,23 +18,27 @@ const createQuiz = quizData => {
     acc += quizSection.outerHTML;
     return acc;
   }, "");
+
   form.insertAdjacentHTML("afterbegin", quizSections);
+
   const formTitle = document.createElement("h2");
   formTitle.textContent = quizData.title;
   formTitle.classList.add("form-title");
   form.prepend(formTitle);
+
   return checkQuiz(form, quizData.questions);
 };
 
 const createQuizElement = (choicesArr, number) => {
   const quizList = document.createElement("ol");
+
   const quizElement = choicesArr.reduce((acc, quiz, index) => {
     const quizElement = document.createElement("li");
     const quizLabel = document.createElement("label");
     const quizInput = document.createElement("input");
     quizInput.setAttribute("type", "radio");
     quizInput.setAttribute("name", `${number}`);
-    quizInput.setAttribute("value", index + 1);
+    quizInput.setAttribute("value", index);
 
     quizLabel.append(quizInput, document.createTextNode(quiz));
     quizElement.appendChild(quizLabel);
@@ -41,6 +46,7 @@ const createQuizElement = (choicesArr, number) => {
     acc += quizElement.outerHTML;
     return acc;
   }, "");
+
   quizList.insertAdjacentHTML("afterbegin", quizElement);
   return quizList;
 };
@@ -48,7 +54,9 @@ const createQuizElement = (choicesArr, number) => {
 const checkQuiz = (form, questions) => {
   const answer = document.createElement("h2");
   answer.classList.add("answer");
+
   document.querySelector("button").insertAdjacentElement("beforebegin", answer);
+
   form.addEventListener("submit", e => {
     e.preventDefault();
     let countCorrectAnswer = 0;
